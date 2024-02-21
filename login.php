@@ -19,12 +19,18 @@ if(isset($_SESSION['id'])){
 <body>
     <div class="container-lg">
 
-    <h1 style="text-align: center;" "class="mt-3">Webboard sinxia</h1>
+    <h1 style="text-align: center;" class="mt-3">Webboard sinxia</h1>
     <?php include "nav.php" ?>
     
     <div class="row mt-4">
         <div class="col-lg-4 col-md-3 col-sm-2 col-1"></div>
         <div class="col-lg-4 col-md-6 col-sm-6 col-10">
+            <?php
+                if(isset($_SESSION['error'])){
+                    echo "<div class='alert alert-danger'>ชื่อบัญชีหรือหัสผ่านไม่ถูกต้อง</div>";
+                    unset($_SESSION['error']);
+                }
+            ?>
             <div class="card bg-light text-dark">
                 <div class="card-header">เข้าสู่ระบบ</div>
                 <div class="card-body">
@@ -50,7 +56,7 @@ if(isset($_SESSION['id'])){
     
    
     <br>
-        <div style="text-align: center;">ถ้ายังไม่ได้เป็นสมาชิก <a href="register.html">กรุณาสมัครสมาชิก</a></div>
+        <div style="text-align: center;">ถ้ายังไม่ได้เป็นสมาชิก <a href="register.php">กรุณาสมัครสมาชิก</a></div>
     </div>
 </body>
 </html>
