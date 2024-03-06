@@ -30,9 +30,8 @@
   <ul class="dropdown-menu" aria-labelledby="Button2">
     <li><a href="#" class="dropdown-item" href="#">ทั้งหมด</a></li>
    <?php 
-     $conn=new PDO("mysql:host=localhost;dbname=webboard;
-     charset=utf8","root","");
-     $sql="SELECT * FROM category";
+$conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
+$sql="SELECT * FROM category";
      foreach($conn->query($sql) as $row){
         echo "<li><a class=dropdown-item href=#>$row[name]</a></li>";
     }
