@@ -1,3 +1,4 @@
+@ -1,37 +1,83 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +11,19 @@
     <title>Document</title>
 </head>
 <body>
+    <h1 style="text-align: center;">Webboard Sinxia</h1>
+    <hr>
+    <div style="text-align: center;"> 
+        <?php 
+            $number = $_GET['id'];
+            echo "ต้องการดูกระทู้หมายเลข $number<br>"; 
+            if(($number % 2) == 0) {
+                echo "เป็นกระทู้หมายเลขคู่ <br>";
+            }
+            else{
+                echo "เป็นกระทู้หมายเลขคี่ <br>";
+            }
+        ?> 
     <div class="container-lg">
     <h1 style="text-align: center;" class="mt-3"> Webboard Sinxia</h1>
     <?php include "nav.php" ?>
@@ -21,7 +35,7 @@
      $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
      $sql="select post.title,post.content,post.post_date,user.login 
     from post inner join user on 
-    (post.user_id=user.id) where post.id=$_GET[id]";
+    (post.user_id= user.id) where post.id=$_GET[id]";
     $result=$conn->query($sql);
     while($row=$result->fetch()){
         echo " <div class='card border-primary'>";
@@ -29,12 +43,13 @@
         echo "<div class='card-body'>$row[1]<br><br>$row[3] - $row[2]</div>";
         echo"</div>";
     }
-    ?>
-    <?php 
-     $sql1="select comment.content,comment.post_date,user.login 
+
+
+    $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
+     $sql="select comment.content,comment.post_date,user.login 
     from comment inner join user on 
     (comment.user_id=user.id) where comment.post_id=$_GET[id]";
-    $result1=$conn->query($sql1);
+    $result=$conn->query($sql);
     $i=1;
     while($row=$result->fetch()){
         echo " <div class='card border-info mt-3'>";
@@ -74,7 +89,9 @@
         </div>
     </div>
     <?php }?>
-    <br>
+   
+    <div style="text-align: center;">
+        <a href="index.php">กลับไปหน้าหลัก</a>
     </div>
     <div class="col-lg-3 col-md-2 c0l-sm-1"></div>
 
