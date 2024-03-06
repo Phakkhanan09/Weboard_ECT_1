@@ -21,7 +21,7 @@
      $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
      $sql="select post.title,post.content,post.post_date,user.login 
     from post inner join user on 
-    (post.user_id= user.id) where post.id=$_GET[id]";
+    (post.user_id=user.id) where post.id=$_GET[id]";
     $result=$conn->query($sql);
     while($row=$result->fetch()){
         echo " <div class='card border-primary'>";
@@ -29,13 +29,12 @@
         echo "<div class='card-body'>$row[1]<br><br>$row[3] - $row[2]</div>";
         echo"</div>";
     }
-
-
-    $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
-     $sql="select comment.content,comment.post_date,user.login 
+    ?>
+    <?php 
+     $sql1="select comment.content,comment.post_date,user.login 
     from comment inner join user on 
     (comment.user_id=user.id) where comment.post_id=$_GET[id]";
-    $result=$conn->query($sql);
+    $result1=$conn->query($sql1);
     $i=1;
     while($row=$result->fetch()){
         echo " <div class='card border-info mt-3'>";
