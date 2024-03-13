@@ -17,6 +17,16 @@ if(isset($_SESSION['id'])){
     <title>register</title>
 </head>
 <body>
+    <script>
+        function OnblurPwd(){
+            let pwd1=document.getElementById("pwd"); //การเข้าถึง element input password อันแรก
+            let pwd2=document.getElementById("pwd2");
+            if(pwd.value!==pwd2.value){
+                alert("รหัสผ่านทั้งสองช่องไม่ตรงกัน");
+                pwd2.value=""; //ลบและให้เป็น สตริง ว่าง
+            }
+        }
+    </script>
     <div class = "container-lg">
         <h1 style="text-align: center;" class="mt-3"> Webboard sinxia </h1>
         <?php include "nav.php" ?>
@@ -42,16 +52,24 @@ if(isset($_SESSION['id'])){
                             <div class="row">
                                 <label for="user"class="col-lg-3 col-form-lable">ชื่อบัญชี:</label>
                                 <div class="col-lg-9">
-                                    <input id="user"type="text" name="login" class="form-control" required>
+                                    <input id="user"type="text" name="login" id="pwd" class="form-control" required>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <label for="pwd" class="col-lg-3 col-form-label">รหัสผ่าน:</label>
                                 <div class="col-lg-9">
-                                    <input  id="pwd" type="password" name="pwd" class="form-control" required>
+                                    <input  id="pwd" type="password" name="pwd"   class="form-control" required>
                                 </div>
 
                             </div>
+                            <div class="row mt-3">
+                                <label for="pwd" class="col-lg-3 col-form-label">ใส่รหัสผ่านซ้ำ:</label>
+                                <div class="col-lg-9">
+                                    <input  id="pwd2" type="password" name="pwd2" onblur="OnblurPwd()" class="form-control" required>
+                                </div>
+
+                            </div>
+                            
                             <div class="row mt-3">
                                 <label for="name"class="col-lg-3 col-form-label">ชื่อ-นามสกุล:</label>
                                 <div class="col-lg-9">

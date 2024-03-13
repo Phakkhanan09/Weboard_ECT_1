@@ -1,4 +1,4 @@
-@ -1,37 +1,83 @@
+
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,19 +11,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 style="text-align: center;">Webboard Sinxia</h1>
-    <hr>
-    <div style="text-align: center;"> 
-        <?php 
-            $number = $_GET['id'];
-            echo "ต้องการดูกระทู้หมายเลข $number<br>"; 
-            if(($number % 2) == 0) {
-                echo "เป็นกระทู้หมายเลขคู่ <br>";
-            }
-            else{
-                echo "เป็นกระทู้หมายเลขคี่ <br>";
-            }
-        ?> 
+   
+         
     <div class="container-lg">
     <h1 style="text-align: center;" class="mt-3"> Webboard Sinxia</h1>
     <?php include "nav.php" ?>
